@@ -130,7 +130,95 @@ function possiblePlaceArr(length, boardArr, direction) {
       }
     }
   }
-  return spaceArr; // this variable spaceArr will hold....
+  return spaceArr; // this variable spaceArr will hold-
   // the starting co-ordinates where the ship can be placed
 }
 /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+/* *
+ * * Make a function to return random starting-
+ * * coordinates from the spaceArr.
+ * * This function will take in the spaceArr as an argument.
+ */
+function getPlacementCoord(spaceArr) {
+  let randIndex = Math.floor(Math.random() * spaceArr.length);
+  return spaceArr[randIndex];
+}
+/* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+/* *
+ * * Make a function that:-
+ * * that takes an argument (length) which is a number and returns
+ * * a ship object having an array of the desired length of the ship
+ * * This object/s will have two functions:-
+ * * (1) isSunk() returns true when all the hit points have been hit.
+ * * (2) hit() with change pop one item from the array in the object when it is hit/clicked.
+ */
+function shipFactory(length) {
+  length = Number(length);
+  hitArr = new Array(length);
+  hitArr.forEach((element) => {
+    element = "NH"; // NH means not hit
+  });
+  return {
+    getLength() {
+      return this.length;
+    },
+    isSunk() {
+      if (hitArr.length === 0) {
+        return true;
+      } else return false;
+    },
+    hit() {
+      hitArr.pop();
+    },
+  };
+}
+/* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+/* *
+ * * Placing the created ship objects in the boardArr
+ * * Make a function that takes as an argument:-
+ * * The boardArr (where the ship object is going to be placed)
+ * * the ship object,
+ * * the direction of placement (lateral or vertical), and,
+ * * the starting co-ordinates where the ship objects will be placed.
+ * * Placing the ship objects on the boardArr means
+ * * to replace the value "emp" in that index with the ship object.
+ */
+function placeShip(boardArr, ship, direction, startCoord) {
+  let length = ship.getLength();
+  let xStrCrd = Number(startCoord[0]);
+  let yStrCrd = Number(startCoord[1]);
+  
+  if (direction === 1) {
+    for (x = xStrCrd; x < (length + xStrCrd); x++) {
+      boardArr[x][yStrCrd] = ship;
+    }
+  } else if (direction === 2) {
+    for (y = yStrCrd; y < (length + yStrCrd); y++) {
+      boardArr[xStrCrd][y] = ship;
+    }
+  }
+}
+
+/* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+// Trial /** Doing Excellent */
+// let boardArr = createBoard();
+
+// let carrier = function () {
+//   return {
+//     getLength () { return 4},
+//   }
+// };
+
+// let direction = 2;
+
+// let spaceArr = possiblePlaceArr(4, boardArr, direction);
+
+// let startCoord = getPlacementCoord (spaceArr);
+
+// placeShip(boardArr, carrier(), direction, startCoord);
+
+// console.log(boardArr);
