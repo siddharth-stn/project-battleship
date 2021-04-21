@@ -8,13 +8,13 @@
  */
 function shipFactory(length) {
   length = Number(length);
-  hitArr = new Array(length);
+  const hitArr = new Array(length);
   hitArr.forEach((element) => {
     element = "NH"; // NH means not hit
   });
   return {
     getLength() {
-      return this.length;
+      return length;
     },
     isSunk() {
       if (hitArr.length === 0) {
