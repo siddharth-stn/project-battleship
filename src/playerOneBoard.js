@@ -31,7 +31,7 @@ placingAllShips(patrolBoatOne, boardArr);
 placingAllShips(patrolBoatTwo, boardArr);
 placingAllShips(patrolBoatThree, boardArr);
 placingAllShips(patrolBoatFour, boardArr);
-/* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+/* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX * */
 
 
 console.log(boardArr);
