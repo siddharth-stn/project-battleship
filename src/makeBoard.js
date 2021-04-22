@@ -52,7 +52,12 @@ function gameBoardFactory() {
   /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX * */
 
   return {
-    getMissCordArr() {
+    getBoard() {
+      return boardArr;
+    },
+    // /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+    getMissCordsArr() {
       return missCordsArr;
     },
     // /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
@@ -90,7 +95,6 @@ function gameBoardFactory() {
           sunkShipArr.push(boardArr[x][y].getName());
         }
         boardArr[x][y] = "hit";
-        //console.log(boardArr);
       } else {
         boardArr[x][y] = "miss";
         missCordsArr.push([x, y]);
