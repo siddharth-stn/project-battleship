@@ -204,6 +204,27 @@
 
 // /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
+
+// /* *
+//  * * Make a function that takes in an array containing
+//  * * the value of co-ordinates where the mouse pointer clicked, and,
+//  * * check that the value in that cell in the boardArray is not 
+//  * * equal to "emp" (means empty). Then the object in that cell is 
+//  * * taken and hit function of that object is called to
+//  * * reduce its length by one element, and, after that the value in the 
+//  * * cell to which the coordinates correspont to will be 
+//  * * replaced by the string "hit" to mark that cell.
+//  */
+// function receiveHit(clickCrd, boardArr) {  //clickcrd is an array//
+//     const [x, y] = clickCrd;
+//     if (boardArr[x][y] != "emp") {
+//         boardArr.hit();
+//         boardArr[x][y] = "hit";
+//     }
+// }
+
+// // /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
 // Trial /** Doing Excellent */
 // let boardArr = createBoard();
 

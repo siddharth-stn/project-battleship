@@ -6,13 +6,16 @@
  * * (1) isSunk() returns true when all the hit points have been hit.
  * * (2) hit() with change pop one item from the array in the object when it is hit/clicked.
  */
-function shipFactory(length) {
+function shipFactory(length, name) {
   length = Number(length);
   const hitArr = new Array(length);
   hitArr.forEach((element) => {
     element = "NH"; // NH means not hit
   });
   return {
+    getName() {
+      return name;
+    },
     getLength() {
       return length;
     },
