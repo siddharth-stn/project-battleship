@@ -7,4 +7,4 @@ function aI_Player(name="JARVIS") {
   };
 }
 
-export default humanPlayer;
+export default aI_Player;
