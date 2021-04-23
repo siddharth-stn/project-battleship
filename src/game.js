@@ -1,3 +1,4 @@
+import "./style.css";
 import humanPlayer from "./humanPlayer.js";
 import aI_Player from "./computerPlayer";
 
