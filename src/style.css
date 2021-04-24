@@ -1,7 +1,59 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 body {
-    background-color: turquoise;
+  background-color: white;
+}
+
+#turnDispPara {
+  display: block;
 }
 
 .wrapperDiv {
-    color: white;
+  display: grid;
+  grid-template-columns: repeat(10, 15px);
+  justify-content: center;
+}
+
+.cellDiv {
+  border-right: #66ccff solid 1px;
+  border-bottom: #66ccff solid 1px;
+}
+
+.cellDiv:nth-child(10n + 1) {
+  border-left: #66ccff solid 1px;
+}
+.cellDiv:nth-child(-n + 10) {
+  border-top: #66ccff solid 1px;
+}
+
+.cellDiv:nth-child(n) {
+  width: 15px;
+  height: 15px;
+}
+
+.CwrapperDiv {
+  display: grid;
+  grid-template-columns: repeat(10, 25px);
+  justify-content: center;
+}
+
+.CcellDiv {
+  border-right: red solid 1px;
+  border-bottom: red solid 1px;
+  text-align: center;
+}
+
+.CcellDiv:nth-child(10n + 1) {
+  border-left: red solid 1px;
+}
+.CcellDiv:nth-child(-n + 10) {
+  border-top: red solid 1px;
+}
+
+.CcellDiv:nth-child(n) {
+  width: 25px;
+  height: 25px;
 }

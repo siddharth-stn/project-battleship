@@ -2,7 +2,7 @@ import "./style.css";
 import humanPlayer from "./humanPlayer.js";
 import aI_Player from "./computerPlayer";
 
-const humanName = prompt("Please Enter Your Name", "Human");
+//const humanName = prompt("Please Enter Your Name", "Human");
 const body = document.getElementsByTagName("body")[0];
 const turnDisp = document.getElementById("turnDispPara");
 
@@ -14,12 +14,23 @@ for (let y = 0; y < 10; y++) {
     let childDiv = document.createElement("div");
     childDiv.className = "cellDiv";
     childDiv.id = `${x},${y}`;
-    childDiv.innerText = `div${x},${y}`;
     boardWrapperDiv.appendChild(childDiv);
   };
 };
 body.appendChild(boardWrapperDiv);
 
+let CboardWrapperDiv = document.createElement("div");
+CboardWrapperDiv.id = "CboardWrapperDiv";
+CboardWrapperDiv.className = "CwrapperDiv";
+for (let y = 0; y < 10; y++) {
+  for (let x = 0; x < 10; x++) {
+    let CchildDiv = document.createElement("div");
+    CchildDiv.className = "CcellDiv";
+    CchildDiv.id = `C${x},${y}`;
+    CboardWrapperDiv.appendChild(CchildDiv);
+  };
+};
+body.appendChild(CboardWrapperDiv);
 
 const startBtn = document.getElementById("startBtn");
 
