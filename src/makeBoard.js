@@ -89,13 +89,13 @@ function gameBoardFactory() {
     receiveAttack(clickCrd) {
       //clickcrd is an array//
       const [x, y] = clickCrd;
-      if (boardArr[x][y] != "emp") {
+      if (boardArr[x][y] != "emp" && boardArr[x][y] != "miss" && boardArr[x][y] != "hit") {
         boardArr[x][y].hit();
         if (boardArr[x][y].isSunk()) {
           sunkShipArr.push(boardArr[x][y].getName());
         }
         boardArr[x][y] = "hit";
-      } else {
+      } else if (boardArr[x][y] = "emp") {
         boardArr[x][y] = "miss";
         missCordsArr.push([x, y]);
       }
