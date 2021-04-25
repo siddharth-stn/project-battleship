@@ -4,6 +4,17 @@ import aI_Player from "./computerPlayer";
 
 const body = document.getElementsByTagName("body")[0];
 
+// *** Function to add reset button on the page ---->
+function resetDone() {
+  const resetBtn = document.getElementById("resetBtn");
+  resetBtn.classList.remove("hidden");
+  resetBtn.addEventListener("click", () => {
+    location.reload();
+    startBtn.classList.remove("hidden");
+  });
+}
+/* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX * */
+
 // * * show messages from the game  ------>
 const turnDisp = document.getElementById("turnDispPara");
 /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX * */
@@ -44,7 +55,11 @@ const startBtn = document.getElementById("startBtn");
 const aI_Board = document.getElementById("CboardWrapperDiv");
 const playerBoard = document.getElementById("boardWrapperDiv");
 
-startBtn.addEventListener("click", (event) => {
+startBtn.addEventListener("click", function play(event) {
+  resetDone();
+  startBtn.classList.add("hidden");
+  aI_Board.classList.remove("hidden");
+  playerBoard.classList.remove("hidden");
   const humanName = prompt("Please Enter Your Name", "Human");
   const playerOne = humanPlayer(humanName);
   const compEnemy = aI_Player();
@@ -58,7 +73,6 @@ startBtn.addEventListener("click", (event) => {
     if (typeof playerOne.board.getBoard()[x][y] === "object") {
       element.innerText = "S";
     }
-    // console.log(x,y);
   });
 
   turnDisp.innerText = `${playerOne.name}'s turn`;
@@ -81,14 +95,18 @@ startBtn.addEventListener("click", (event) => {
     }
     if (playerOne.board.isAllShipSunk()) {
       console.log(compEnemy.name + " has won.");
-      aI_Board.removeEventListener("click", humanPlay);
+      turnDisp.innerText = compEnemy.name + " has won.";
+      aI_Board.classList.add("hidden");
+      playerBoard.classList.add("hidden");
+    } else {
+      turnDisp.innerText = `${playerOne.name}'s turn`;
+      aI_Board.addEventListener("click", humanPlay);
     }
-    turnDisp.innerText = `${playerOne.name}'s turn`;
-    aI_Board.addEventListener("click", humanPlay);
   }
   /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
   function humanPlay(event) {
+    let stop = false;
     if (event.target.innerText != "X" && event.target.innerText != "O") {
       // *** Attack by the human player ------>
       aI_Board.removeEventListener("click", humanPlay);
@@ -101,28 +119,27 @@ startBtn.addEventListener("click", (event) => {
       compEnemy.board.receiveAttack([x, y]);
       if (compEnemy.board.getBoard()[x][y] === "hit") {
         event.target.innerText = "X";
+        event.target.style.backgroundColor = "red";
       } else if (compEnemy.board.getBoard()[x][y] === "miss") {
         event.target.innerText = "O";
+        event.target.style.backgroundColor = "yellow";
       }
       if (compEnemy.board.isAllShipSunk()) {
+        turnDisp.innerText = playerOne.name + " has won.";
         console.log(playerOne.name + " has won.");
+        aI_Board.classList.add("hidden");
+        playerBoard.classList.add("hidden");
+        stop = true;
+      } else {
+        turnDisp.innerText = `${compEnemy.name}'s turn`;
       }
-      turnDisp.innerText = `${compEnemy.name}'s turn`;
+
       /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
       // *** calling the compAttack function after a delay of one second
-
-      setTimeout(compAttack, 1000);
+      if (!stop) {
+        setTimeout(compAttack, 1000);
+      }
     }
   }
 });
-
-// *** A function to delay the execution of the program ---->
-function delay(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-/* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
