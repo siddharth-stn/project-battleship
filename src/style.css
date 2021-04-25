@@ -40,11 +40,13 @@
     display: grid;
     grid-template-columns: repeat(10, 15px);
     justify-content: center;
+    font-size: 0.7em;
   }
 
   .cellDiv {
     border-right: #66ccff solid 1px;
     border-bottom: #66ccff solid 1px;
+    text-align: center;
   }
 
   .cellDiv:nth-child(10n + 1) {

@@ -21,6 +21,7 @@ function gameBoardFactory() {
 
   const missCordsArr = []; //records the coordinates ([x,y]) of missed hits
   const sunkShipArr = []; // records the names (String) of the ship objects that have been sunk
+  const currXY = [];
   /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
   const carrier = shipFactory(4, "carrier"); // Carrier Ship Created here
 
@@ -52,6 +53,11 @@ function gameBoardFactory() {
   /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX * */
 
   return {
+    getCurrXY() {
+      return currXY;
+    },
+    // /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
     getBoard() {
       return boardArr;
     },
@@ -88,16 +94,49 @@ function gameBoardFactory() {
      */
     receiveAttack(clickCrd) {
       //clickcrd is an array//
-      const [x, y] = clickCrd;
-      if (boardArr[x][y] != "emp" && boardArr[x][y] != "miss" && boardArr[x][y] != "hit") {
-        boardArr[x][y].hit();
-        if (boardArr[x][y].isSunk()) {
-          sunkShipArr.push(boardArr[x][y].getName());
+      if (clickCrd === "random") {
+        let runThis = true;
+        while (runThis) {
+          let x = Math.floor(Math.random() * boardArr.length);
+          let y = Math.floor(Math.random() * boardArr.length);
+          while (currXY.length > 0) {
+            currXY.pop();
+          }
+          currXY.push(x);
+          currXY.push(y);
+          if (
+            boardArr[x][y] != "emp" &&
+            boardArr[x][y] != "miss" &&
+            boardArr[x][y] != "hit"
+          ) {
+            boardArr[x][y].hit();
+            if (boardArr[x][y].isSunk()) {
+              sunkShipArr.push(boardArr[x][y].getName());
+            }
+            boardArr[x][y] = "hit";
+            runThis = false;
+          } else if (boardArr[x][y] === "emp") {
+            boardArr[x][y] = "miss";
+            missCordsArr.push([x, y]);
+            runThis = false;
+          }
         }
-        boardArr[x][y] = "hit";
-      } else if (boardArr[x][y] = "emp") {
-        boardArr[x][y] = "miss";
-        missCordsArr.push([x, y]);
+      } else {
+        const [x, y] = clickCrd;
+        if (
+          boardArr[x][y] != "emp" &&
+          boardArr[x][y] != "miss" &&
+          boardArr[x][y] != "hit"
+        ) {
+          boardArr[x][y].hit();
+          if (boardArr[x][y].isSunk()) {
+            sunkShipArr.push(boardArr[x][y].getName());
+          }
+          boardArr[x][y] = "hit";
+        } else if (boardArr[x][y] === "emp") {
+          boardArr[x][y] = "miss";
+          missCordsArr.push([x, y]);
+        }
       }
     },
     // /* * XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
