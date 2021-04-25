@@ -1,5 +1,11 @@
 import shipFactory from "./ship.js";
 import placingAllShips from "./logic.js";
+import arrow from "./sounds/arrow.mp3";
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX//
+
+// *** Initialize arrow sound --->
+let arrowSound = new Audio(arrow);
+// XXXXX______XXXXXX____XXXXX_____XXXXX //
 
 function gameBoardFactory() {
   /* *
@@ -91,8 +97,10 @@ function gameBoardFactory() {
      * * replaced by the string "hit" to mark that cell.
      * * If the clicked cell(coordinates) is an empty ("emp") then the value
      * * is replaced by the string "miss" to mark that cell.
+     * * if computer's turn then clickCrd is equal to random.
      */
     receiveAttack(clickCrd) {
+      arrowSound.play();
       //clickcrd is an array//
       if (clickCrd === "random") {
         let runThis = true;

@@ -2,7 +2,9 @@ import "./style.css";
 import humanPlayer from "./humanPlayer.js";
 import aI_Player from "./computerPlayer";
 
+
 const body = document.getElementsByTagName("body")[0];
+
 
 // *** Function to add reset button on the page ---->
 function resetDone() {
@@ -138,8 +140,9 @@ startBtn.addEventListener("click", function play(event) {
 
       // *** calling the compAttack function after a delay of one second
       if (!stop) {
-        setTimeout(compAttack, 1000);
+        setTimeout(compAttack, 2000);
       }
     }
   }
 });
+

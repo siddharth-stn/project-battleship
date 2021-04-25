@@ -1,3 +1,11 @@
+import explosion from "./sounds/explosion.mp3";
+import gunShot from "./sounds/gunShot.mp3";
+
+// *** make audio component of different sounds
+// *** to be played later in the game
+let expSound = new Audio(explosion);
+let gunSound = new Audio(gunShot);
+
 /* *
  * * Make a function that:-
  * * that takes an argument (length) which is a number and returns
@@ -21,10 +29,12 @@ function shipFactory(length, name) {
     },
     isSunk() {
       if (hitArr.length === 0) {
+        expSound.play();
         return true;
       } else return false;
     },
     hit() {
+      gunSound.play();
       hitArr.pop();
     },
   };
