@@ -4,12 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <title>Battleship</title>
   </head>
   <body>
-    <button id="resetBtn" class="hidden">RESET</button>
-    <button id="startBtn">START</button>
-    <p id="turnDispPara">Click Start to play</p>
+    <button type="button" id="resetBtn" class="btn btn-warning buttons hidden">RESET</button>
+    <button type="button" id="startBtn" class="btn btn-success buttons">
+      START
+    </button>
+    <p id="turnDispPara" class="alert alert-info" >Click Start to play</p>
     <script src="main.js"></script>
   </body>
 </html>
