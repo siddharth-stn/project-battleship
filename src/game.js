@@ -1,6 +1,7 @@
 import "./style.css";
 import humanPlayer from "./humanPlayer.js";
 import aI_Player from "./computerPlayer";
+import "bootstrap";
 
 
 const body = document.getElementsByTagName("body")[0];
@@ -58,6 +59,9 @@ const aI_Board = document.getElementById("CboardWrapperDiv");
 const playerBoard = document.getElementById("boardWrapperDiv");
 
 startBtn.addEventListener("click", function play(event) {
+  turnDisp.classList.remove("alert-info");
+  turnDisp.classList.add("alert-success");
+
   resetDone();
   startBtn.classList.add("hidden");
   aI_Board.classList.remove("hidden");

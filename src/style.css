@@ -34,13 +34,15 @@
 
   #turnDispPara {
     display: block;
+    text-align: center;
   }
 
   .wrapperDiv {
     display: grid;
     grid-template-columns: repeat(10, 15px);
     justify-content: center;
-    font-size: 0.7em;
+    font-size: 0.5em;
+    margin-bottom: 10px;
   }
 
   .cellDiv {
@@ -83,6 +85,13 @@
   .CcellDiv:nth-child(n) {
     width: 25px;
     height: 25px;
+  }
+
+  .buttons {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 
